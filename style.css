@@ -1,0 +1,717 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    background-color: rgb(93, 93, 93);
+}
+
+/* google chrome invisible scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+}
+
+/*Menu is on side for computers */
+@media (min-width: 1200px){
+    header {
+        top: 0;
+        background-color: #0a0a0a;
+        padding: 20px;
+        position: fixed;
+        width: 23vw;
+        max-width: 250px;
+        height: 100vh;
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+        border-right: 1px solid rgb(204, 204, 204);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #header-menu img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-top: 20px;
+        border-radius: 50px;
+        transition: transform 0.3s;
+    }
+
+    #header-menu {
+        margin: auto;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #header-menu nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #header-menu nav ul li {
+        margin-top: 30px;
+    }
+
+    /*to move right, cause menu is on left-side*/
+    main {
+        margin-left: 250px;
+    }
+
+    #header-menu nav ul li:last-child {
+        margin-bottom: 30px;
+    }
+
+    header.scrolled {
+        background-color: #333;
+    }
+}
+
+/*Menu is on top for tablets*/
+@media (max-width: 1200px){
+    header {
+        top: 0;
+        background-color: #0a0a0a;
+        position: fixed;
+        width: 100%;
+        height: auto;
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        place-content: center;
+    }
+
+    #header-menu a{
+        margin: auto;
+    }
+
+    #header-menu img {
+        width: 50px;
+        height: auto;
+        display: block;
+        border-radius: 50px;
+        transition: transform 0.3s;
+    }
+
+    #header-menu {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #header-menu nav ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    
+    header.scrolled {
+        background-color: #333;
+        opacity: 0.5;
+    }
+}
+
+/*Menu is on top, theres no nav-links but hamburger menu for mobiles*/
+@media (max-width: 660px) {
+    header {
+        padding: 10px;
+        margin: auto;
+    }
+    #hamburger-menu {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 4px 0;
+        transition: 0.4s;
+    }
+
+    #hamburger-menu.change .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    #hamburger-menu.change .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #hamburger-menu.change .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    #header-menu nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #header-menu nav.active {
+        display: block;
+    }
+
+    #header-menu nav ul {
+        list-style-type: none;
+        padding: 0;
+        justify-content: center;
+    }
+
+    #header-menu nav ul li {
+        padding: 10px 0;
+        border-top: 1px solid #555;
+    }
+
+    #header-menu nav ul li:first-child{
+        border: none;
+        margin-right: 2vw;
+    }
+
+    #header-menu nav ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    #header-menu nav ul li a:hover {
+        background-color: #555555;
+    }
+
+    #header-menu img{
+        transition: transform 0.3s;
+    }
+
+    #header-menu a{
+        margin: auto;
+    }
+    header.scrolled {
+        background-color: #333;
+        opacity: 0.5;
+    }
+}
+
+#header-menu img:hover{
+    transform: scale(1.1);
+}
+
+#header-menu nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#header-menu nav ul li:not(:first-child) a:hover {
+    background-color: #555555;
+}
+
+header.scrolled #header-menu nav ul li:not(:first-child) a {
+    color: #fff;
+}
+
+header.scrolled #header-menu nav ul li:not(:first-child) a:hover {
+    background-color: #555;
+}
+
+#header-menu nav ul li:not(:first-child) a.active {
+    background-color: #555;
+    color: #fff;
+}
+
+#home-link img{
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+/* home img, chrome center align, align-item, text-align, justify-content... didnt worked */
+#home-link{
+    text-align: -webkit-center;
+}
+
+#header-menu nav ul li:first-child a {
+    padding: 0;
+}
+
+#header-menu nav ul li:first-child a:hover {
+    padding: 0;
+    transform: scale(1.1);
+}
+
+section {
+    position: relative;
+    min-height: calc(100vh - 20px);
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* background whitening */
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: -1;
+}
+
+/* background img, parallax scrolling */
+section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('img/background.png');
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 1;
+    z-index: -2;
+}
+
+/* hello section */
+section:first-child {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+section:first-child h2{
+    font-size: 60px;
+}
+
+section:first-child h3{
+    font-size: 40px;
+}
+
+section:first-child p{
+    font-size: 40px;
+}
+
+/* firework img (just for fun)*/
+section:first-child p::before,
+section:first-child p::after {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url('img/firework.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* javascript function when there is multiple line delete before and after element */
+section:first-child p.multiline::before,
+section:first-child p.multiline::after {
+    display: none;
+}
+
+section h2 {
+    margin-top: 50px;
+    font-family: 'Bangers', cursive;
+    font-size: 36px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+section p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#about .social-links {
+    margin-top: 20px;
+}
+
+#about .social-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+}
+
+#about .social-links ul li {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#about .social-links ul li a {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+/* img stripes for social media links */
+#about #facebook {
+    background: url('img/social_media.png') 1px 50px;
+    transition: transform 0.3s;
+}
+
+#about #instagram {
+    background: url('img/social_media.png') -65px 50px;
+    transition: transform 0.3s;
+}
+
+#about #twitter {
+    background: url('img/social_media.png') -129px 50px;
+    transition: transform 0.3s;
+}
+
+#about #linkedin {
+    background: url('img/social_media.png') -191px 50px;
+    transition: transform 0.3s;
+}
+
+#about .social-links ul li:hover {
+    transform: scale(1.1);
+}
+
+#experience table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#experience th, #experience td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#experience th {
+    background-color: #f2f2f2;
+    font-weight: 500;
+}
+
+#experience tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#experience tbody td {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+#experience p {
+    margin-top: 40px;
+}
+
+/* for better looking table in smaller devices */
+@media (max-width: 768px) {
+    #experience th, #experience td {
+        padding: 8px 12px;
+        font-size: 14px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+    
+    #experience th {
+        font-size: 14px;
+    }
+    
+    #experience p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+    
+    .show-description {
+        display: table-cell !important;
+        max-width: none !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+    }
+}
+
+/* horizontal scrolling table */
+@media (max-width: 650px) {
+    #experience table {
+        overflow-x: auto;
+        display: block;
+        overflow-x: auto;
+    }
+
+    #experience table::-webkit-scrollbar {
+        display: none;
+    }
+
+    #experience th, #experience td {
+        padding: 8px 12px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+    
+    #experience th {
+        font-size: 14px;
+    }
+    
+    #experience p {
+        margin-top: 20px;
+        font-size: 14px;
+    }
+}
+
+#education{
+    min-width: 10vh;
+}
+
+#education .content{
+    display: flex;
+    flex-direction: row-reverse;
+    min-width: 10vh
+}
+
+#education .information {
+    margin-left: 50px;
+    max-width: 100vh;
+}
+
+/* random "school" topic images with links to VUT in from of grid table */
+#education .table {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(15vw, 10vw)); 
+    grid-template-rows: repeat(3, minmax(15vw, 10vw));
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+#education img {
+    width: 100%;
+    height: 100%; 
+    margin: 0;
+    transition: transform 0.3s;
+    object-fit: cover;
+}
+
+#education img:hover{
+    transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+    #education .content{
+        display: flex;
+        flex-direction: column;
+        min-width: 10vh;
+        align-items: center;
+    }
+    
+    #education .information {
+        max-width: 100vh;
+        margin: 0;
+    }
+    
+    #education .table {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(40vw, 10vw)); 
+        grid-template-rows: repeat(3, minmax(40vw, 10vw));
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+}
+
+#skills {
+    padding: 20px;
+}
+
+#skills .skill-category {
+    margin-bottom: 20px;
+}
+
+#skills .skill-category h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#skills .skill-category ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#skills .skill-category ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+#skills .rating {
+    margin-left: 10px;
+    color: #666;
+}
+
+#interest {
+    position: relative;
+    width: 100%;
+}
+
+#interest .videos {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+}
+
+#interest video {
+    max-width: calc(50% - 10px); 
+    min-width: 300px;
+    height: auto; 
+    margin-bottom: 20px;
+}
+
+/* make videos in 2 rows */
+@media (max-width: 680px) {
+    #interest video {
+        min-width: 100%;
+        height: auto; 
+        margin-bottom: 20px;
+    }
+}
+
+#contact p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+#contact .contact-info {
+    margin-bottom: 50px;
+}
+
+#contact .contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+#contact .contact-info ul li {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+#contact .contact-info ul li i {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+#contact .fas {
+    font-size: 1.2em;
+}
+
+#contact .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact .contact-form h3 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+#contact .contact-form .form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#contact .contact-form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+#contact .contact-form input[type="text"],
+#contact .contact-form input[type="email"],
+#contact .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+#contact .contact-form button {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact .contact-form button:hover {
+    background-color: #0056b3;
+}
+
+#contact #contactForm{
+    text-align: center;
+}
+
+@media (max-width:680px){
+    #contact ul {
+        flex-direction: column;
+    }
+}
+
+#footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer .footer-content {
+    font-size: 0.9em;
+}
+
+/* delete padding cause menu is not on side but in top */
+@media (min-width: 1200px) {
+    #footer{
+        padding-left: 250px;
+        margin: auto;
+    }
+}
